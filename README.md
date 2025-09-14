@@ -1,6 +1,6 @@
 Sorteador de Carros do Forza Horizon 5
 
-Este é um aplicativo simples que sorteia um carro do Forza Horizon 5 a partir dos filtros de grupo selecionados, além de sortear também um tipo de tunagem. A base de dados é um .json com todos os carros do jogo. Este projeto foi desenvolvido para aprender um pouco de HTML/CSS, além de descobrir uma maneira de conectar o backend com o frontend. 
+Este é um aplicativo simples que sorteia um carro do Forza Horizon 5 a partir dos filtros de grupo selecionados, além de sortear também um tipo de tunagem. A base de dados é um .json com todos os carros do jogo. Este projeto foi desenvolvido para aprender um pouco de HTML/CSS, além de descobrir uma maneira de conectar o backend com o frontend. Partes do código geradas por IA, pois é um projeto para estudo. 
 
 Funcionalidades
 Sorteio Aleatório: Sorteia um carro aleatório da lista completa do jogo.
