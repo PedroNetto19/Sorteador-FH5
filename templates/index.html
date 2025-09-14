@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Sorteador de Carros Forza</title>
+</head>
+<body>
+    <header>
+        <h1>Sorteador de Carros do Forza Horizon 5</h1>
+        <p>Escolha seus filtros e sorteie um carro!</p>
+    </header>
+
+    <main>
+        <form action="/" method="post">
+            <div class="opcoes-filtro">
+                <label><input type="checkbox" name="grupo" value="Buggies"> Buggies</label>
+                <label><input type="checkbox" name="grupo" value="Muscle Clássico"> Muscle Clássico</label>
+                <label><input type="checkbox" name="grupo" value="Carros Clássicos de Corrida"> Carros Clássicos de Corrida</label>
+                <label><input type="checkbox" name="grupo" value="Rally Clássico"> Rally Clássico</label>
+                <label><input type="checkbox" name="grupo" value="Carros Esportivos Clássicos"> Carros Esportivos Clássicos</label>
+                <label><input type="checkbox" name="grupo" value="Carros Cult"> Carros Cult</label>
+                <label><input type="checkbox" name="grupo" value="Carros de Drift"> Carros de Drift</label>
+                <label><input type="checkbox" name="grupo" value="Brinquedos de Pista Extremos"> Brinquedos de Pista Extremos</label>
+                <label><input type="checkbox" name="grupo" value="Carros de GT"> Carros de GT</label>
+                <label><input type="checkbox" name="grupo" value="Hot Hatches"> Hot Hatches</label>
+                <label><input type="checkbox" name="grupo" value="Hipercarros"> Hipercarros</label>
+                <label><input type="checkbox" name="grupo" value="Muscle Moderno"> Muscle Moderno</label>
+                <label><input type="checkbox" name="grupo" value="Rally Moderno"> Rally Moderno</label>
+                <label><input type="checkbox" name="grupo" value="Carros Esportivos Modernos"> Carros Esportivos Modernos</label>
+                <label><input type="checkbox" name="grupo" value="Supercarros Modernos"> Supercarros Modernos</label>
+                <label><input type="checkbox" name="grupo" value="Fora de Estrada"> Fora de Estrada</label>
+                <label><input type="checkbox" name="grupo" value="Picapes e 4x4"> Picapes e 4x4</label>
+                <label><input type="checkbox" name="grupo" value="Monstros do Rally"> Monstros do Rally</label>
+                <label><input type="checkbox" name="grupo" value="Clássicos Raros"> Clássicos Raros</label>
+                <label><input type="checkbox" name="grupo" value="Hot Hatches Retrô"> Hot Hatches Retrô</label>
+                <label><input type="checkbox" name="grupo" value="Muscle Retrô"> Muscle Retrô</label>
+                <label><input type="checkbox" name="grupo" value="Rally Retrô"> Rally Retrô</label>
+                <label><input type="checkbox" name="grupo" value="Sedãs Retrô"> Sedãs Retrô</label>
+                <label><input type="checkbox" name="grupo" value="Carros Esportivos Retrôs"> Carros Esportivos Retrôs</label>
+                <label><input type="checkbox" name="grupo" value="Supercarros Retrô"> Supercarros Retrô</label>
+                <label><input type="checkbox" name="grupo" value="Hot Rods e Personalizados"> Hot Rods e Personalizados</label>
+                <label><input type="checkbox" name="grupo" value="Heróis dos Utilitários Esportivos"> Heróis dos Utilitários Esportivos</label>
+                <label><input type="checkbox" name="grupo" value="Super GT"> Super GT</label>
+                <label><input type="checkbox" name="grupo" value="Super Hot Hatches"> Super Hot Hatches</label>
+                <label><input type="checkbox" name="grupo" value="Supersedãs"> Supersedãs</label>
+                <label><input type="checkbox" name="grupo" value="Carros de Pista"> Carros de Pista</label>
+                <label><input type="checkbox" name="grupo" value="Picapes"> Picapes</label>
+                <label><input type="checkbox" name="grupo" value="Buggies Ilimitados"> Buggies Ilimitados</label>
+                <label><input type="checkbox" name="grupo" value="Offroad Ilimitado"> Offroad Ilimitado</label>
+                <label><input type="checkbox" name="grupo" value="UTVs"> UTVs</label>
+                <label><input type="checkbox" name="grupo" value="Vans e Utilitários"> Vans e Utilitários</label>
+                <label><input type="checkbox" name="grupo" value="Carros Antigos de Corrida"> Carros Antigos de Corrida</label>
+                <label class="todos-os-filtros"><input type="checkbox" id="selecionar-todos"> Incluir todos</label>
+            </div>
+
+            <button class="botao-sorteio" type="submit">Sortear!</button>
+        </form>
+        
+        <section class="resultado">
+            <h2>Resultado do Sorteio:</h2>
+            {% if resultado.carro is none%}
+                <p>Selecione o seus filtros e clique em Sortear!</p>
+            {% elif resultado.carro == 'Nenhum carro encontrado neste filtro.' %}
+                <p>{{ resultado.carro }}</p>
+            {% else %}
+                <p>{{ resultado.carro['Group'] }}</p>
+                <h3>Modelo: {{ resultado.carro.Maker }} {{ resultado.carro['Model']}}</h3>
+                <p>Tunagem: {{ resultado.tunagem }}</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <script>
+        const incluirTodos = document.getElementById('selecionar-todos');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        incluirTodos.addEventListener('change', () => {
+            const isChecked = incluirTodos.checked;
+
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
+        });
+    </script>
+</body>
+</html>
